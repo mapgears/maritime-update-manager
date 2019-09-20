@@ -1,0 +1,26 @@
+[email]
+
+error_email = "error@example.com"
+
+[[updater]]
+# UpdateModule options
+module = "smac-m-data"
+
+# SmacUpdater options
+smac_location = "/path/to/SMAC-M/"
+configfile = "/path/to/config.toml"
+
+[[updater]]
+# UpdateModule options
+module = "smac-m-mapfile"
+
+# SmacUpdater options
+smac_location = "/path/to/SMAC-M/"
+configfile = "/path/to/config.toml"
+
+[[updater]]
+# UpdateModule options
+module = "ppgrastertime"
+
+# PgRaster
+pgrastertime_location = "/path/to/pgrastertime"

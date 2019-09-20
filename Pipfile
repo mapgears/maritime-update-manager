@@ -1,0 +1,16 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pyflakes = "*"
+pycodestyle = "*"
+
+[packages]
+maritime-update-manager = {editable = true,path = "."}
+toml = "*"
+pipenv = "*"
+
+[requires]
+python_version = "3.7"
