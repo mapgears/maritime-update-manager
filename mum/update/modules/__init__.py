@@ -22,9 +22,10 @@ def get_update_module(module_name: str) -> Type[UpdateModule]:
 
 class UpdateModule(metaclass=ABCMeta):
     """Base class for an Update Module"""
-    __slots__ = ('module_name',)
+    __slots__ = ('module_name', 'enabled',)
 
-    def __init__(self, module=None, **kwargs):
+    def __init__(self, module=None, enabled=True, **kwargs):
+        self.enabled = enabled
         self.module_name = module
         super().__init__(**kwargs)
 
@@ -33,6 +34,9 @@ class UpdateModule(metaclass=ABCMeta):
 
         Subclasses may override this method to check if new files are
         available before running their update process.
+
+        UNSTABLE: Signature may change in the future to allow modules to
+        remember info about their state
         """
         return True
 
@@ -46,9 +50,9 @@ class NullUpdateModule(UpdateModule):
     """Update module not installed"""
     __slots__ = ()
 
-    def __init__(self, module_name=None, **kwargs):
+    def __init__(self, module=None, enabled=True, **kwargs):
         # Swallow all kwargs from config file
-        super().__init__(module_name=module_name)
+        super().__init__(module=module, enabled=enabled)
 
     def update(self):
         raise NotImplementedError(
