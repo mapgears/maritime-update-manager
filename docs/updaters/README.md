@@ -9,14 +9,16 @@ Each updater module can be appear multiple times in the configuration file.
 
 # Documentation on specific modules
 
+* [MapCache](./MapCache.md)
 * [SMAC-M](./SMAC-M.md)
 
 
 # Documentation format
 
 Each updater is documented in the following format. The `module-name` is the
-value to enter in the block's `module` parameter to use this module. Unknown
-module names in the configuration file are an error.
+value to enter in the block's `module` parameter to use this module. All updater
+block has an enabled option. If set to false, the updater module will not be
+called. Unknown module names in the configuration file are an error.
 
 ## Updater name (`module-name`)
 
@@ -26,6 +28,7 @@ Description of the updater.
 # Example block with dummy values
 [[updater]]
 module = "module-name"
+enabled = true
 arg1 = "Value 1"
 arg2 = "Value 2"
 # ...

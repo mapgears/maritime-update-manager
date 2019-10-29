@@ -16,6 +16,7 @@ def main():
 
     for updater_config in config.get('updater', []):
         updater_cls = get_update_module(updater_config['module'])
-        updater = updater_cls(**updater_config)
-        if updater.needs_update():
-            updater.update()
+        if updater_config.get('enabled', True):
+            updater = updater_cls(**updater_config)
+            if updater.needs_update():
+                updater.update()

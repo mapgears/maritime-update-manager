@@ -38,6 +38,9 @@ setup(
         'mum.update_module': [
             'smac-m-data=mum.update.modules.smacm:SmacDataUpdater',
             'smac-m-mapfile=mum.update.modules.smacm:SmacMapUpdater',
+            'mapcache-clear=mum.update.modules.mapcache:MapcacheClear',
+            'mapcache-seed=mum.update.modules.mapcache:MapcacheSeed',
+            'mapcache-reseed=mum.update.modules.mapcache:MapcacheReseed',
             'pgrastertime=mum.update.modules.pgrastertime:PgRasterTimeUpdater',
         ]
     },
