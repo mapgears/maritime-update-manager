@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from abc import ABCMeta, abstractmethod
 from pkg_resources import iter_entry_points
-from typing import Optional, Dict, Type
+from typing import Optional, Dict, Type, Mapping
 
 
 _update_modules: Optional[Dict[str, Type[UpdateModule]]] = None
@@ -29,19 +29,16 @@ class UpdateModule(metaclass=ABCMeta):
         self.module_name = module
         super().__init__(**kwargs)
 
-    def needs_update(self):
+    def needs_update(self, state: Mapping):
         """Check if the update module should run.
 
         Subclasses may override this method to check if new files are
         available before running their update process.
-
-        UNSTABLE: Signature may change in the future to allow modules to
-        remember info about their state
         """
         return True
 
     @abstractmethod
-    def update(self):
+    def update(self, state: Mapping):
         """Perform the update"""
         pass
 
@@ -54,7 +51,7 @@ class NullUpdateModule(UpdateModule):
         # Swallow all kwargs from config file
         super().__init__(module=module, enabled=enabled)
 
-    def update(self):
+    def update(self, state):
         raise NotImplementedError(
             f"Update Module '{self.module_name}' not found"
         )

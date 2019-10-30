@@ -1,5 +1,6 @@
-[email]
+statefile = "/var/tmp/mum.statefile"
 
+[email]
 error_email = "error@example.com"
 
 [[updater]]
