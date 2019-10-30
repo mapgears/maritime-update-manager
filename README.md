@@ -17,7 +17,9 @@ Configure the updaters
 `cp config.sample.toml /path/to/config.toml`
 
 Edit the configuration file as needed.
-[More info on the updater modules][updater-doc]
+
+- [More info on the configuration file][config-doc]
+- [More info on the updater modules][updater-doc]
 
 ## Running MUM
 
@@ -34,4 +36,5 @@ mum_update /path/to/toml
 
 [pipenv]: https://github.com/pypa/pipenv
 [pyenv]: https://github.com/pyenv/pyenv
+[config-doc]: ./docs/config.md
 [updater-doc]: ./docs/updaters/

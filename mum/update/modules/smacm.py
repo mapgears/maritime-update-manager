@@ -35,7 +35,7 @@ class SmacDataUpdater(SmacUpdater):
 
     _script = 'bin/generate_shapefiles.py'
 
-    def update(self):
+    def update(self, state):
         return self.execute_smac_script(self._script)
 
 
@@ -44,5 +44,5 @@ class SmacMapUpdater(SmacUpdater):
 
     _script = 'chart-installation/generate_map_files/generate_map_config.py'
 
-    def update(self):
+    def update(self, state):
         return self.execute_smac_script(self._script)

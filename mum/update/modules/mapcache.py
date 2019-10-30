@@ -35,7 +35,7 @@ class _Mapcache(UpdateModule):
         super().__init_subclass__(**kwargs)
         cls.mode = mode
 
-    def update(self):
+    def update(self, state):
         run([
             self.seeder,
             '-m', self.mode,
