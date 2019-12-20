@@ -2,6 +2,9 @@
 from __future__ import annotations
 
 from argparse import ArgumentParser
+import base64
+import hashlib
+import os
 import shelve
 
 import toml
@@ -15,14 +18,20 @@ def main():
     args = parser.parse_args()
 
     config = toml.load(args.configfile)
-    statefile = config.get('statefile', '/var/tmp/mum.statefile')
+    statefile = config.get('statefile')
+    if statefile is None:
+        location = os.path.realpath(args.configfile)
+        hash = hashlib.sha256(location.encode()).digest()[:6]
+        encoded_hash = base64.urlsafe_b64encode(hash).decode()
+        statefile = f'/var/tmp/mum-{encoded_hash[:8]}.statefile'
 
+    transient_state = {}
     with shelve.open(statefile, writeback=True) as db:
         for updater_config in config.get('updater', []):
             updater_cls = get_update_module(updater_config['module'])
             if updater_config.get('enabled', True):
                 updater = updater_cls(**updater_config)
-                if updater.needs_update(db):
-                    updater.update(db)
+                if updater.needs_update(db, transient_state):
+                    updater.update(db, transient_state)
 
             db.sync()

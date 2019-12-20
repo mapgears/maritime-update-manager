@@ -7,6 +7,7 @@ Seeds a MapCache cache.
 module = "mapcache-seed"
 configfile = "/path/to/mapcache.xml"
 tileset = "tileset"
+proj = "EPSG:4326"
 
 seeder = "/path/to/mapcache_seed"  # Optional
 
@@ -23,12 +24,17 @@ seeder = "/path/to/mapcache_seed"  # Optional
 
   Name of the tileset to seed.
 
+* `proj`
+
+  Projection of the tileset. If this is set incorrectly, the module may not
+  regenerate the correct tiles.
+
 * `seeder` (Optional)
 
   Path to the mapcache_seed executable. If not set, the module will use the
   first executable named `mapcache_seed` found on the PATH.
 
-* `[update.params]` (Optional)
+* `[updater.params]` (Optional)
  
   Additional parameters to pass to to the seeder. If a parameter has the value
   `true`, it will be passed as a flag to the seeder; otherwise, both the flag
@@ -51,6 +57,7 @@ Clears a MapCache cache.
 module = "mapcache-clear"
 configfile = "/path/to/mapcache.xml"
 tileset = "tileset"
+proj = "EPSG:4326"
 
 seeder = "/path/to/mapcache_seed"  # Optional
 
@@ -66,12 +73,17 @@ seeder = "/path/to/mapcache_seed"  # Optional
 
   Name of the tileset to seed.
 
+* `proj`
+
+  Projection of the tileset. If this is set incorrectly, the module may not
+  regenerate the correct tiles.
+
 * `seeder` (Optional)
 
   Path to the mapcache_seed executable. If not set, the module will use the
   first executable named `mapcache_seed` found on the PATH.
 
-* `[update.params]` (Optional)
+* `[updater.params]` (Optional)
  
   Additional parameters to pass to to the seeder. If a parameter has the value
   `true`, it will be passed as a flag to the seeder; otherwise, both the flag
@@ -87,6 +99,7 @@ Reseeds a MapCache cache.
 module = "mapcache-reseed"
 configfile = "/path/to/mapcache.xml"
 tileset = "tileset"
+proj = "EPSG:4326"
 
 seeder = "/path/to/mapcache_seed"  # Optional
 
@@ -103,12 +116,17 @@ seeder = "/path/to/mapcache_seed"  # Optional
 
   Name of the tileset to seed.
 
+* `proj`
+
+  Projection of the tileset. If this is set incorrectly, the module may not
+  regenerate the correct tiles.
+
 * `seeder` (Optional)
 
   Path to the mapcache_seed executable. If not set, the module will use the
   first executable named `mapcache_seed` found on the PATH.
 
-* `[update.params]` (Optional)
+* `[updater.params]` (Optional)
  
   Additional parameters to pass to to the seeder. If a parameter has the value
   `true`, it will be passed as a flag to the seeder; otherwise, both the flag

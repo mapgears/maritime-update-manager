@@ -12,5 +12,5 @@ class PgRasterTimeUpdater(UpdateModule):
 
         super().__init__(**kwargs)
 
-    def update(self, state) -> CompletedProcess:
+    def update(self, state, transient_state) -> CompletedProcess:
         return run([self.pipenv_project.which('pgrastertime')])

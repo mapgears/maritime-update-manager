@@ -16,9 +16,8 @@ Each updater module can be appear multiple times in the configuration file.
 # Documentation format
 
 Each updater is documented in the following format. The `module-name` is the
-value to enter in the block's `module` parameter to use this module. All updater
-block has an enabled option. If set to false, the updater module will not be
-called. Unknown module names in the configuration file are an error.
+value to enter in the block's `module` parameter to use this module. Unknown
+module names in the configuration file are an error.
 
 ## Updater name (`module-name`)
 
@@ -41,3 +40,20 @@ arg2 = "Value 2"
 * `arg2`
 
   Description of the second argument
+
+# Options common to all updaters
+
+* `module-name`
+
+  Name of the updater module configured by this block.
+
+* `enabled` (Optional)
+
+  If set to `false`, the updater module will not be executed.
+
+* `tag` (Optional)
+
+  A string identifying this updater module as part of a group. Multiple modules
+  using the same tag will share information as they can. If the same module is
+  used multiple times in the configuration file, each should have its own tag or
+  they might encounter problems.
