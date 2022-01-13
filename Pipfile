@@ -10,7 +10,7 @@ pycodestyle = "*"
 [packages]
 maritime-update-manager = {editable = true,path = "."}
 toml = "*"
-pipenv = "*"
+pipenv = ">=2022.1.8"
 
 [requires]
 python_version = "3.7"
